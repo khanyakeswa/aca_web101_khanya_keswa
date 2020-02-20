@@ -31,6 +31,7 @@
   flex-direction: column;
   font-family: 'Metropolis Regular', sans-serif;
   font-size: 45px;
+  z-index: 1;
 }
 
 .sidebar .title .name {
@@ -212,11 +213,6 @@
   width: 70px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
   z-index: 4;
-  transition: background-size .2s;
-}
-
-.logo:hover {
-  background-size: 60px;
 }
 
 .section.top .splash {

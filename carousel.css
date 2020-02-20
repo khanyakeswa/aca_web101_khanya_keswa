@@ -11,6 +11,8 @@
   transform-style: preserve-3d;
   transition: transform 1s;
   opacity: 0;
+  z-index: 2;
+  background-color: #fff;
 }
 
 .carousel.visible {
