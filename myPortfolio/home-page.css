@@ -19,34 +19,100 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: center;
   left: 70px;
   position: absolute;
   right: 70px;
   top: 0;
 }
 
+.sidebar .mouse-over {
+  position: absolute;
+  transform: translateY(calc(33vh + 260px));
+  width: 100%;
+  height: 25%;
+  font-family: 'Metropolis Light', sans-serif;
+  font-size: 15px;
+  color: #bbbbbb;
+  opacity: 1;
+}
+
 .sidebar .title {
+  position: absolute;
+  width: 400px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  transform: translateY(33vh);
+  background-color: #fff;
+  background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1), rgba(255,255,255,1));
   font-family: 'Metropolis Regular', sans-serif;
-  font-size: 45px;
-  z-index: 1;
+  font-size: 48px;
+  z-index: 2;
+}
+
+.sidebar .title .aca-logo {
+  position: absolute;
+  width: 125px;
+  height: auto;
+  transform: translateY(-24vh) translateX(-10px);
 }
 
 .sidebar .title .name {
   color: #505050;
+  line-height: 1.2;
+  z-index: 2;
+  background-color: #ffffff;
 }
 
 .sidebar .title .role {
   color: #e54e40;
 }
 
-.sidebar .title .underscore {
-  max-width: 100px;
-  min-width: 100px;
-  border-bottom: 3px solid #e54e40;
-  padding-top: 60px;
+.sidebar .underscore {
+  width: 110px;
+  border-bottom: 4px solid #e54e40;
+  padding-top: 50px;
+}
+
+.sidebar .blurb {
+  transform: translateY(40vh);
+  height: 240px;
+  z-index: 0;
+  opacity: 0;
+}
+
+.sidebar:hover .blurb {
+  opacity: 1;
+  transform: translateY(53vh);
+}
+
+.sidebar:hover .title {
+  transform: translateY(23vh);
+}
+
+.sidebar:hover .mouse-over {
+  opacity: 0;
+  transform: translateY(calc(46vh + 260px));
+}
+
+.sidebar .mouse-over,
+.sidebar .mouse-over::after,
+.sidebar .title,
+.sidebar .title::after,
+.sidebar .blurb,
+.sidebar .blurb::after {
+  -webkit-transition: all 0.75s;
+	-moz-transition: all 0.75s;
+  -o-transition: all 0.75s;
+	transition: all 0.75s;
+}
+
+.sidebar .blurb-content {
+  font-family: 'Metropolis Light', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #4d4d4f;
+  scrollbar-width: none;
 }
 
 .portfolio-button-wrapper {
@@ -188,7 +254,6 @@
   font-size: 15px;
   padding: 0 0 0 35px;
   transition: color 200ms;
-  cursor: pointer;
   user-select: none;
 }
 
