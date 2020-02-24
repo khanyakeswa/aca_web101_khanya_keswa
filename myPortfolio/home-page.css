@@ -18,6 +18,7 @@
 .sidebar .top {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   height: 100vh;
   left: 70px;
   position: absolute;
@@ -26,23 +27,22 @@
 }
 
 .sidebar .mouse-over {
-  position: absolute;
-  transform: translateY(calc(33vh + 260px));
   width: 100%;
-  height: 25%;
+  height: auto;
   font-family: 'Metropolis Light', sans-serif;
+  transform: translateY(-75px);
+  margin-top: 20px;
   font-size: 15px;
-  color: #bbbbbb;
+  color: #a0a0a0;
   opacity: 1;
 }
 
 .sidebar .title {
-  position: absolute;
   width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transform: translateY(33vh);
+  transform: translateY(-75px);
   background-color: #fff;
   background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1), rgba(255,255,255,1));
   font-family: 'Metropolis Regular', sans-serif;
@@ -50,11 +50,11 @@
   z-index: 2;
 }
 
-.sidebar .title .aca-logo {
-  position: absolute;
+.sidebar .aca-logo {
   width: 125px;
   height: auto;
-  transform: translateY(-24vh) translateX(-10px);
+  transform: translateX(-10px) translateY(-75px);
+  margin-bottom: 35px;
 }
 
 .sidebar .title .name {
@@ -75,26 +75,35 @@
 }
 
 .sidebar .blurb {
-  transform: translateY(40vh);
-  height: 240px;
+  position: absolute;
+  display: table;
+  height: 100vh;
+  overflow: scroll;
+  scrollbar-width: 0px;
   z-index: 0;
   opacity: 0;
 }
 
 .sidebar:hover .blurb {
   opacity: 1;
-  transform: translateY(53vh);
+  transform: translateY(175px);
 }
 
 .sidebar:hover .title {
-  transform: translateY(23vh);
+  transform: translateY(-125px);
+}
+
+.sidebar:hover .aca-logo {
+  transform: translateX(-10px) translateY(-125px);
 }
 
 .sidebar:hover .mouse-over {
   opacity: 0;
-  transform: translateY(calc(46vh + 260px));
+  transform: translateY(75px);
 }
 
+.sidebar .aca-logo,
+.sidebar .aca-logo::after,
 .sidebar .mouse-over,
 .sidebar .mouse-over::after,
 .sidebar .title,
@@ -108,6 +117,8 @@
 }
 
 .sidebar .blurb-content {
+  display: table-cell;
+  vertical-align: middle;
   font-family: 'Metropolis Light', sans-serif;
   font-size: 16px;
   line-height: 1.5;
