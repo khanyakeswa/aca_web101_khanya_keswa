@@ -1,0 +1,68 @@
+.sidebar .scene {
+  width: 35%;
+  height: 75px;
+  transform: translateY(-5px);
+  z-index: 1;
+}
+
+.carousel {
+  width: 35%;
+  height: 70px;
+  position: absolute;
+  transform: translateZ(-110px);
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  opacity: 0;
+  background-color: #fff;
+}
+
+.carousel.visible {
+  opacity: 1;
+}
+
+.carousel-cell {
+  position: absolute;
+  width: 430px;
+  height: 70px;
+  top: 0px;
+  line-height: 80px;
+  font-size: 45px;
+  font-family: 'Metropolis Semibold';
+  color: #e54e40;
+  text-align: left;
+  transition: transform 1s;
+  overflow-wrap: break-word;
+}
+
+.carousel-cell:nth-child(1) {
+  background: hsla(0, 0%, 100%, 1);
+}
+.carousel-cell:nth-child(2) {
+  background: hsla(0, 0%, 100%, 1);
+}
+.carousel-cell:nth-child(3) {
+  background: hsla(0, 0%, 100%, 1);
+}
+.carousel-cell:nth-child(4) {
+  background: hsla(0, 0%, 100%, 1);
+}
+
+.carousel-cell:nth-child(1) {
+  transform: rotateX(0deg) translateZ(288px);
+}
+.carousel-cell:nth-child(2) {
+  transform: rotateX(40deg) translateZ(288px);
+}
+.carousel-cell:nth-child(3) {
+  transform: rotateX(80deg) translateZ(288px);
+}
+.carousel-cell:nth-child(4) {
+  transform: rotateX(120deg) translateZ(288px);
+}
+
+.carousel-options {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  background: hsla(0, 0%, 100%, 0);
+}

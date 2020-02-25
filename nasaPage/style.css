@@ -1,0 +1,320 @@
+html {
+  display: table;
+  box-sizing: border-box;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  line-height: 1.3;
+  box-shadow: 0px 3px 12px 3px rgba(0, 0, 0, 0.25);
+  background-image: url(./nasa_tile.png);
+  background-size: auto;
+  background-repeat: repeat;
+  background-position: center;
+}
+
+body {
+  display: table-cell;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 850px;
+  height: 794px;
+  background-color: #fff;
+}
+
+.splash-carousel {
+  box-sizing: border-box;
+  width: 100%;
+  height: 450px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.splash-carousel .splash-header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 850px;
+  height: 450px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.splash-carousel:hover .splash-header .click-drag {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.splash-carousel .splash-header header {
+  max-height: 100px;
+  padding-bottom: 30px;
+  font-family: 'acumin-pro', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 100px;
+}
+
+.splash-carousel .splash-header .click-drag {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  max-height: 12px;
+  margin: 10px 0px 0px 0px;
+  top: 10px;
+  transform: translateY(0px);
+  opacity: .5;  
+  transition-delay: 0.1s;
+}
+
+.splash-header .click-drag h1 {
+  font-family: 'acumin-pro', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 15px;
+  margin: 0px;
+}
+
+.splash-header .click-drag svg {
+  height: 10px;
+  margin: 5.25px 10px 0px 10px;
+}
+
+.splash-header .click-drag,
+.splash-header .click-drag::after {
+  -webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.splash-carousel {
+  height: 450px;
+}
+
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 324px;
+  background-color: #e6e6e6;
+  font-family: 'acumin-pro', Arial, Helvetica, sans-serif;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 25px 25px 0px 25px;
+}
+
+.header {
+  margin-bottom: 25px;
+  color: #000000;
+  font-family: 'acumin-pro', Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.body-text {
+  color: #6b6b6b;
+  font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  margin-bottom: 7.5px;
+}
+
+.name-entry {
+  width: 100%;
+}
+
+.msg-entry {
+  margin-top: 7.5px;
+}
+
+.label {
+  margin-bottom: 1px;
+  color: #6b6b6b;
+  font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.dialog-box {
+  box-sizing: border-box;
+  width: 100%;
+  border-width: 0;
+  resize: none;
+  font-family: 'Hind Siliguri', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 100;
+  padding: 4px 4px 2px 4px;
+}
+
+.dialog-box::placeholder {
+  color: darkgrey;
+}
+
+.name-entry .dialog-box {
+  height: 25px;
+}
+
+.msg-entry .dialog-box {
+  height: 75px;
+}
+
+.send-button {
+  margin: 10px 0 0 25px;
+  width: 80px;
+  height: 35px;
+  border: 3px none #fff;
+  background-color: #4d4d4d;
+  opacity: 100;
+  text-align: center;
+  font: 600 18px 'acumin-pro';
+  color: #ffffff;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.send-button .button {
+  position: relative;
+  right: 0px;
+  top: 4px;
+}
+
+.send-button .sent {
+  position: absolute;
+  background-color: #cccccc;
+  width: 80px;
+  height: 35px;
+  text-align: center;
+  color: #4d4d4d;
+  right: 0px;
+  opacity: 0;
+  top: 0px;
+  z-index: 2;
+  display: block;
+  cursor: pointer;
+}
+
+.send-button .sent .note {
+  position: relative;
+  right: 0px;
+  top: 4px;
+}
+
+.send-button .arrow,
+.send-button .arrow::after,
+.send-button .button,
+.send-button .button::after,
+.send-button,
+.send-button::after {
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.send-button .arrow::before,
+.send-button .arrow::after{
+  content: '';
+  position: absolute;
+  z-index: 2;
+}
+
+.send-button .button::before,
+.send-button .button::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+}
+
+.send-button::before,
+.send-button::after {
+  background-color: #fff;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.send-button:hover .button {
+  right: 5px;
+}
+
+.send-button:hover .arrow {
+  right: 6px;
+  fill: #fff;
+  opacity: 100;
+}
+
+.send-button {
+  overflow: hidden;
+  user-select: auto;
+}
+
+.send-button .arrow {
+  fill: #fff;
+  opacity: 0;
+  position: absolute;
+  height: 10px;
+  top: 13px;
+  right: 12px;
+}
+
+.toggled .send-button .sent {
+  opacity: 100;
+  transition: opacity .3s ease-out;
+  cursor: default;
+}
+
+.toggled .send-button {
+  cursor: default;
+}
+
+.carousel {
+  box-sizing: border-box;
+  background: #4d4d4d;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-cell {
+  width: 850px;
+  height: 450px;
+  margin-right: 0px;
+  background: #fff;
+  border: none;
+  counter-increment: gallery-cell;
+}
+
+.carousel-cell:nth-child(1) {
+  background-image: url('splash_1.jpg');
+  background-size: cover;
+}
+
+.carousel-cell:nth-child(2) {
+  background-image: url('splash_2.jpg');
+  background-size: cover;
+}
+
+.carousel-cell:nth-child(3) {
+  background-image: url('splash_3.jpg');
+  background-size: cover;
+}
+
+.carousel-cell:nth-child(4) {
+  background-image: url('splash_4.jpg');
+  background-size: cover;
+}
+
+.carousel-cell:nth-child(5) {
+  background-image: url('splash_5.jpg');
+  background-size: cover;
+}
