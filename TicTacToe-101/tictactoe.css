@@ -14,3 +14,7 @@ td {
 table {
   margin: auto auto;
 }
+
+.clicked {
+  background-color: #ca1818
+}
