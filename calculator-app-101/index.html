@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <!-- <script src="main.js"></script> -->
+  <script src="main.js"></script>
   <title>Document</title>
 </head>
 <body>
@@ -18,9 +18,9 @@
       <!-- the "onclick" event listener passes its element's "id" to the "changeOperation" function in the main.js file -->
       <button type="button" name="add" id="addition" onclick="changeOperation(this.id)">Add</button>
       <button type="button" name="subtract" id="subtraction" onclick="changeOperation(this.id)">Subtract</button>
-      <button type="button" name="multiply" id="multiplication">Multiply</button>
-      <button type="button" name="divide" id="division">Divide</button>
-      <button type="button" name="modulus" id="modulus">Modulus</button>
+      <button type="button" name="multiply" id="multiplication" onclick="changeOperation(this.id)">Multiply</button>
+      <button type="button" name="divide" id="division" onclick="changeOperation(this.id)">Divide</button>
+      <button type="button" name="modulus" id="modulus" onclick="changeOperation(this.id)">Modulus</button>
     </div>
     <br>
     <!-- this "onclick" calls the "equal" function in the main.js file -->
