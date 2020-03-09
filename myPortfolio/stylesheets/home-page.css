@@ -9,6 +9,7 @@
   z-index: 2;
   transform: translateX(0);
   transition: transform 0.5s;
+  overflow: hidden;
 }
 
 .collapsed .sidebar {
@@ -30,7 +31,7 @@
   width: 100%;
   height: auto;
   font-family: 'Metropolis Light', sans-serif;
-  transform: translateY(-75px);
+  transform: translateY(0px);
   margin-top: 20px;
   font-size: 15px;
   color: #a0a0a0;
@@ -42,7 +43,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transform: translateY(-75px);
+  transform: translateY(0px);
   background-color: #fff;
   background-image: linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1), rgba(255,255,255,1));
   font-family: 'Metropolis Regular', sans-serif;
@@ -86,20 +87,16 @@
 
 .sidebar:hover .blurb {
   opacity: 1;
-  transform: translateY(175px);
+  transform: translateY(110px);
 }
 
 .sidebar:hover .title {
   transform: translateY(-125px);
 }
 
-.sidebar:hover .aca-logo {
-  transform: translateX(-10px) translateY(-125px);
-}
-
 .sidebar:hover .mouse-over {
   opacity: 0;
-  transform: translateY(75px);
+  transform: translateY(110px);
 }
 
 .sidebar .aca-logo,
@@ -282,7 +279,7 @@
   position: fixed;
   top: 0px;
   right: 0px;
-  background: #e54e40 url("logo.svg") no-repeat center center;
+  background: #e54e40 url("/myPortfolio/graphics/logo.svg") no-repeat center center;
   background-size: 50px;
   color: #ffffff;
   height: 70px;
@@ -297,7 +294,7 @@
   right: 70px;
   left: 505px;
   bottom: 70px;
-  background: url("splash_1.jpg") no-repeat center center;
+  background: url("/myPortfolio/imgs/splash_1.jpg") no-repeat center center;
   background-size: cover;
 }
 

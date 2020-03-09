@@ -1,0 +1,82 @@
+.scroll-indicator {
+  position: fixed;
+  width: 10px;
+  left: 30px;
+  top: calc(50vh - 61.65px);
+  z-index: 3;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.collapsed .scroll-indicator {
+  opacity: 1;
+}
+
+.lightbox-effect .scroll-indicator {
+  visibility: hidden;
+}
+
+.enter-section-1 .scroll-indicator .dot-1 {
+  fill: #e54e40;
+  transition: fill .2s;
+}
+.enter-section-1 .scroll-indicator .dot-1 {
+  fill: #d1d3d4;
+  transition: fill .2s;
+}
+
+.enter-section-2 .scroll-indicator .dot-2 {
+  fill: #e54e40;
+  transition: fill .2s;
+}
+.exit-section-2 .scroll-indicator .dot-2 {
+  fill: #d1d3d4;
+  transition: fill .2s;
+}
+
+.enter-section-3 .scroll-indicator .dot-3 {
+  fill: #e54e40;
+  transition: fill .2s;
+}
+.exit-section-3 .scroll-indicator .dot-3 {
+  fill: #d1d3d4;
+  transition: fill .2s;
+}
+
+.enter-section-4 .scroll-indicator .dot-4 {
+  fill: #e54e40;
+  transition: fill .2s;
+}
+.exit-section-4 .scroll-indicator .dot-4 {
+  fill: #d1d3d4;
+  transition: fill .2s;
+}
+
+.enter-section-5 .scroll-indicator .dot-5 {
+  fill: #e54e40;
+  transition: fill .2s;
+}
+.exit-section-5 .scroll-indicator .dot-5 {
+  fill: #d1d3d4;
+  transition: fill .2s;
+}
+
+.enter-section-6 .scroll-indicator .dot-6 {
+  fill: #e54e40;
+  transition: fill .2s;
+}
+.exit-section-6 .scroll-indicator .dot-6 {
+  fill: #d1d3d4;
+  transition: fill .2s;
+}
+
+.enter-section-7 .scroll-indicator .dot-7 {
+  fill: #e54e40;
+  transition: fill .2s;
+}
+.exit-section-7 .scroll-indicator .dot-7 {
+  fill: #d1d3d4;
+  transition: fill .2s;
+}
+
+

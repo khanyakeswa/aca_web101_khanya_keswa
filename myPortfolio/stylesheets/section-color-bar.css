@@ -1,0 +1,157 @@
+.color-bar {
+  height: 300px;
+  width: 1920px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 80px rgba(0, 0, 0, 0.15);
+  overflow-y: hidden;
+  padding-left: 70px; 
+  /* background: url(/color-bar-background.jpg) no-repeat left bottom; */
+  background: #e54e40 no-repeat left bottom;
+  background-size: cover;
+}
+
+.color-bar .lottie {
+  position: absolute;
+  height: 300px;
+  width: max-content;
+  opacity: 1;
+  transition: opacity 250ms;
+}
+
+.color-bar:hover .lottie {
+  opacity: .5;
+}
+
+.color-bar .tagline {
+  position: absolute;
+  margin: 125px 0 0 67px;
+  font-family: 'Metropolis Regular';
+  font-size: 3em;
+  color: #fff;
+  height: auto;
+}
+
+.color-bar .color-bar-header {
+  position: absolute;
+}
+
+.tagline-button-wrapper {
+  left: 140px;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 200px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  transform: translateY(0); 
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition: box-shadow .25s opacity 250ms;
+  -webkit-animation-name: hvr-bob-float, hvr-bob;
+  animation-name: hvr-bob-float, hvr-bob;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-in-out, ease-in-out;
+  animation-timing-function: ease-in-out, ease-in-out;
+  -webkit-animation-iteration-count: 2, infinite;
+  animation-iteration-count: 2, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: alternate, forwards;
+  animation-direction: alternate, forwards;
+  box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1);
+}
+
+.tagline-button {
+  align-items: center;
+  background-color: #ffffff;
+  color: #e54e40;
+  border: 3px solid #fff;
+  padding: 2px 10px;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  transition: all 250ms;
+}
+
+@-webkit-keyframes hvr-bob {
+  0% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+  50% {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+  }
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+@keyframes hvr-bob {
+  0% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+  50% {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+  }
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+@-webkit-keyframes hvr-bob-float {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+@keyframes hvr-bob-float {
+  0% {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+.tagline-button-wrapper:hover, .tagline-button-wrapper:focus, .tagline-button-wrapper:active {
+  -webkit-animation-name: hvr-bob-float, hvr-bob;
+  animation-name: hvr-bob-float, hvr-bob;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-in-out, ease-in-out;
+  animation-timing-function: ease-in-out, ease-in-out;
+  -webkit-animation-iteration-count: 2, infinite;
+  animation-iteration-count: 2, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: alternate, forwards;
+  animation-direction: alternate, forwards;
+  box-shadow: 0 10px 10px -3px rgba(0, 0, 0, 0.1);
+  transition: all .25s;
+}
+
+.tagline-button .button-content {
+  font-family: 'Metropolis Semibold', sans-serif;
+  font-size: 12px;
+  margin-top: 6px;
+  padding-right: 10px;
+}
+
+.tagline-button .button-graphic {
+  min-height: 10px;
+  min-width: 6px;
+}
