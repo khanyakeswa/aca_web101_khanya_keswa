@@ -14,8 +14,8 @@ const LottieAnimations = {
 }
 
 colorBarWrapper.addEventListener('mouseover', function(event) {
-  LottieAnimations.colorbar.setSpeed(.5)
+  LottieAnimations.colorbar.setSpeed(1)
 })
 colorBarWrapper.addEventListener('mouseleave', function(event) {
-  LottieAnimations.colorbar.setSpeed(1)
+  LottieAnimations.colorbar.setSpeed(.5)
 })

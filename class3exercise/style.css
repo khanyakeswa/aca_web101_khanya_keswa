@@ -26,6 +26,7 @@ main {
 }
 
 header {
+  display: inline;
   width: fit-content;
   font-family: poynter-oldstyle-display, Arial, Helvetica, sans-serif;
   font-weight: 400;
@@ -102,6 +103,10 @@ h2 {
 
   .top {
     flex-direction: column;
+  }
+
+  .top header {
+    display: block;
   }
 
   .bottom {

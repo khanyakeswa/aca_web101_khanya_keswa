@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <link rel="stylesheet" href="./stylesheets/style.css" />
+    <link rel="stylesheet" href="./stylesheets/main.css" />
     <link rel="stylesheet" href="./stylesheets/normalize.css" />
+    <link rel="stylesheet" href="./stylesheets/home-page.css" />
+    <link rel="stylesheet" href="./stylesheets/contact-page.css" />
+    <link rel="stylesheet" href="./stylesheets/carousel.css" />
+    <link rel="stylesheet" href="./stylesheets/section-color-bar.css" />
+    <link rel="stylesheet" href="./stylesheets/link-underscore.css" />
+    <link rel="stylesheet" href="./stylesheets/scroll-buttons.css" />
+    <link rel="stylesheet" href="./stylesheets/scroll-indicators.css" />
+
     <link rel="stylesheet" href="https://use.typekit.net/bcw7brl.css" />
     <link rel="stylesheet" href="./metropolis/metropolis.css" />
 
@@ -14,7 +22,7 @@
   </head>
   <body>
     <main>
-      <div class="scroll-buttons">
+      <div class="scroll-button">
         <div class="scroll-up">
           <svg
             data-name="Layer 1"
@@ -50,76 +58,51 @@
             viewBox="0 0 8.79 123.3"
             preserveAspectRatio="xMidYMid"
           >
-            <circle class="dot-7" cx="4.39" cy="118.91" r="4.39" />
-            <circle class="dot-6" cx="4.39" cy="99.82" r="4.39" />
-            <circle class="dot-5" cx="4.39" cy="80.73" r="4.39" />
-            <circle class="dot-4" cx="4.39" cy="61.64" r="4.39" />
-            <circle class="dot-3" cx="4.39" cy="42.56" r="4.39" />
-            <circle class="dot-2" cx="4.39" cy="23.48" r="4.39" />
-            <circle class="dot-1" cx="4.39" cy="4.39" r="4.39" />
+            <circle
+              class="dot-7"
+              cx="4.39"
+              cy="118.91"
+              r="4.39"
+              fill="#d1d3d4"
+            />
+            <circle
+              class="dot-6"
+              cx="4.39"
+              cy="99.82"
+              r="4.39"
+              fill="#d1d3d4"
+            />
+            <circle
+              class="dot-5"
+              cx="4.39"
+              cy="80.73"
+              r="4.39"
+              fill="#d1d3d4"
+            />
+            <circle
+              class="dot-4"
+              cx="4.39"
+              cy="61.64"
+              r="4.39"
+              fill="#d1d3d4"
+            />
+            <circle
+              class="dot-3"
+              cx="4.39"
+              cy="42.56"
+              r="4.39"
+              fill="#d1d3d4"
+            />
+            <circle
+              class="dot-2"
+              cx="4.39"
+              cy="23.48"
+              r="4.39"
+              fill="#d1d3d4"
+            />
+            <circle class="dot-1" cx="4.39" cy="4.39" r="4.39" fill="#d1d3d4" />
           </svg>
         </div>
-      </div>
-      <div class="menu">
-        <div class="logo">
-          <svg
-            id="Layer_1"
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 161.88 92.5"
-          >
-            <title>Personal Logo</title>
-            <polygon
-              points="93.05 83.27 85.81 83.27 85.59 83.09 46.73 47.73 46.73 83.27 41.87 83.27 41.87 12.96 46.73 12.96 46.73 43.86 81.87 12.96 88.88 12.96 51.19 45.58 93.05 83.27"
-              style="fill:#fff"
-            />
-            <polygon
-              points="120 83.27 112.84 83.27 112.63 83.09 72.88 46.49 72.88 45.06 108.94 12.96 115.88 12.96 78.65 45.58 120 83.27"
-              style="fill:#fff"
-            />
-          </svg>
-        </div>
-        <div class="navbar">
-          <div class="links">
-            <div
-              onclick="location.href='https://khanyakeswa.github.io/myPortfolio/';"
-              style="cursor: pointer;"
-              class="link home"
-            >
-              Home
-            </div>
-            <div
-              onclick="location.href='https://medium.com/@khanya.keswa';"
-              style="cursor: pointer;"
-              class="link about-me"
-            >
-              My Blog
-            </div>
-            <div
-              onclick="location.href='YOUR-URL-HERE';"
-              style="cursor: pointer;"
-              class="link process"
-            >
-              My Process
-            </div>
-            <div
-              onclick="location.href='YOUR-URL-HERE';"
-              style="cursor: pointer;"
-              class="link portfolio"
-            >
-              Portfolio
-            </div>
-            <div
-              onclick="location.href='YOUR-URL-HERE';"
-              style="cursor: pointer;"
-              class="link portfolio"
-            >
-              Contact Me
-            </div>
-          </div>
-          <div class="link-underscore"></div>
-        </div>
-        <div class="hamburger-menu"></div>
       </div>
       <div class="sidebar">
         <div class="top">
@@ -127,9 +110,9 @@
             <div class="name">Hi! I'm Khanya Keswa,</div>
             <div class="scene">
               <div class="carousel">
-                <div class="carousel-cell">UI/UX Designer</div>
-                <div class="carousel-cell">UI/UX Developer</div>
+                <div class="carousel-cell">UX/UI Designer</div>
                 <div class="carousel-cell">Product Designer</div>
+                <div class="carousel-cell">Graphic Designer</div>
                 <div class="carousel-cell">Design Strategist</div>
               </div>
             </div>
@@ -189,31 +172,54 @@
           </div>
         </div>
       </div>
+      <div class="navbar">
+        <div class="links">
+          <div
+            onclick="location.href='https://khanyakeswa.github.io/myPortfolio/';"
+            style="cursor: pointer;"
+            class="link home"
+          >
+            Home
+          </div>
+          <div
+            onclick="location.href='https://medium.com/@khanya.keswa';"
+            style="cursor: pointer;"
+            class="link about-me"
+          >
+            My Blog
+          </div>
+          <div
+            onclick="location.href='YOUR-URL-HERE';"
+            style="cursor: pointer;"
+            class="link process"
+          >
+            My Process
+          </div>
+          <div
+            onclick="location.href='YOUR-URL-HERE';"
+            style="cursor: pointer;"
+            class="link portfolio"
+          >
+            Portfolio
+          </div>
+          <div
+            onclick="location.href='YOUR-URL-HERE';"
+            style="cursor: pointer;"
+            class="link portfolio"
+          >
+            Contact Me
+          </div>
+        </div>
+        <div class="link-underscore"></div>
+        <div class="hamburger-menu"></div>
+      </div>
       <div class="section top">
+        <div class="logo"></div>
         <div class="splash"></div>
         <div class="header"></div>
       </div>
-      <div class="section about-me">
-        <div class="body">
-          <div class="content one">
-            <div class="headshot"></div>
-          </div>
-          <div class="content two">
-            <div class="title">
-              <div class="header">About Me</div>
-              <div class="underscore"></div>
-            </div>
-            <div class="info">
-              <div class="tile">
-                <div class="image"></div>
-                <div class="caption"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section color-bar">
-        <div class="tagline">Let's build something cool.</div>
+      <div class="color-bar">
+        <div class="tagline">I'd love to work with you</div>
         <div class="tagline-button-wrapper">
           <div class="tagline-button">
             <div class="button-content">CONTACT ME</div>
@@ -263,6 +269,7 @@
           </div>
           <div class="content"><div class="graphics"></div></div>
         </div>
+        <div class="backsplash"></div>
       </div>
     </main>
 

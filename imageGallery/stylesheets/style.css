@@ -1,0 +1,47 @@
+main {
+  width: 100vw;
+  height: 100vh;
+}
+
+.carousel-container {
+
+}
+
+.carousel {
+  width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: khaki;
+}
+
+.image-container {
+  position: relative;
+  grid-column: auto;
+  width: 250px;
+  height: 250px;
+}
+
+.modal {
+  width: 250px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  background-color: rgba(0, 0, 0, .5);
+  color: #ffffff;
+  transition: all .5s;
+  opacity: 0;
+}
+
+.modal:hover {
+  opacity: 1;
+}
+
+.image {
+  height: 250px;
+  width: 100%;
+  background-image: url('/imageGallery/stainless-steel-spoon-on-black-ceramic-bowl-3789885.jpg');
+  background-size: cover;
+}
