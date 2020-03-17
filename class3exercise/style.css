@@ -27,7 +27,7 @@ main {
 
 header {
   display: inline;
-  width: fit-content;
+  /* width: fit-content; */
   font-family: poynter-oldstyle-display, Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 64px;
