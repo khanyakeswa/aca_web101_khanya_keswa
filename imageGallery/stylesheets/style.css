@@ -24,9 +24,9 @@
   --grid-slot-u-pos: translate(0, 0);
 }
 
-body {
-  height: 100vh;
-  width: 100%;
+body::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
 }
 
 main {
@@ -34,19 +34,21 @@ main {
   display: grid;
   height: 100%;
   display: flex;
-  align-items: center;
+  justify-content: center;
   width: 100%;
 }
 
 .gallery {
   position: relative;
-  width: auto;
-  height: auto;
+  display: grid;
+  grid-template-areas: "center";
+  width: 100vw;
 }
 
 .placeholder-container {
-  top: 0;
-  width: 100%;
+  grid-area: center;
+  box-sizing: content-box;
+  width: fit-content;
   height: auto;
   display: grid;
   justify-content: center;
@@ -63,6 +65,8 @@ main {
   grid-column: auto;
   width: calc(100vh / 3);
   border-radius: 5%;
+  visibility: visible;
+  transition: all .5s;
   height: calc(100vh / 3);
   -webkit-animation: flip-diagonal-2-bck 1s
     cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite alternate both;
@@ -166,17 +170,14 @@ main {
 }
 
 .carousel-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  grid-area: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: grid;
   perspective: 100px;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(7, 1fr);
+  
 }
 
 .carousel-container .button-container {
@@ -263,20 +264,28 @@ main {
   box-sizing: border-box;
   transform: var(--grid-slot-root-pos);
   transition: transform 1s;
+  perspective: 500px;
   animation-timing-function: transform ease-out;
   animation: fade-in 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) 1.2s 1 alternate
     both;
 }
 
 .image-container .image {
-  box-shadow: 2.5px 5px 15px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 2px 7.5px 0px rgba(0, 0, 0, 0.5);
   opacity: 0;
   border-radius: 5px;
   width: 95%;
   height: 95%;
   background-image: url(/imageGallery/stainless-steel-spoon-on-black-ceramic-bowl-3789885.jpg);
   background-size: cover;
-  transition: opacity 0.5s;
+  transition: all 0.25s;
+  transform: translateZ(0px);
+  transform-style: preserve-3d;
+}
+
+.image-container.shuffle-a:hover .image {
+  transform: translateZ(10px);
+  box-shadow: 1px 2px 15px 0px rgba(0, 0, 0, 0.25);
 }
 
 .image-container.shuffle-a .image {

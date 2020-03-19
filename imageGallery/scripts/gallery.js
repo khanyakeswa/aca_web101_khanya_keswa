@@ -1,5 +1,9 @@
 const gridSquares = document.getElementsByClassName('placeholder')
+const placeholderContainer = document.querySelector('.placeholder-container')
 const imgSquares = document.getElementsByClassName('image-container')
+const imgContainer = document.querySelector('.carousel-container')
+
+const galleryButton = document.querySelector('.button')
 
 let root = document.documentElement
 
@@ -12,7 +16,8 @@ var tileDimensions = document.querySelectorAll(
   '.image-container',
   '.button-container'
 )
-var gridPlaceholder = gridSquares[0].getBoundingClientRect()
+
+assignImagesXY.called = false
 
 window.addEventListener('resize', function(e) {
   pageLoad()
@@ -20,18 +25,24 @@ window.addEventListener('resize', function(e) {
 })
 
 function pageLoad() {
+  var gridPlaceholder = gridSquares[0].getBoundingClientRect()
+  var templateContainerDims = placeholderContainer.getBoundingClientRect()
   for (let i = 0; i < gridSquares.length; i++) {
-    gridSquaresXOrigin[i] = gridSquares[i].getBoundingClientRect()
-    gridSquaresYOrigin[i] = gridSquares[i].getBoundingClientRect()
-    console.log(gridSquaresXOrigin[i].x, gridSquaresYOrigin[i].y)
+    gridSquaresXOrigin[i] = gridSquares[i].offsetLeft
+    gridSquaresYOrigin[i] = gridSquares[i].offsetTop
+    console.log(gridSquaresXOrigin[i], gridSquaresYOrigin[i])
     gridSlotCoordinates[i] =
-      gridSquaresXOrigin[i].x + 'px' + ', ' + gridSquaresYOrigin[i].y + 'px'
+      gridSquaresXOrigin[i] + 'px' + ', ' + gridSquaresYOrigin[i] + 'px'
   }
   var rootGridPos = gridSlotCoordinates.splice(10, 1)
   root.style.setProperty(
     '--grid-slot-root-pos',
     'translate(' + rootGridPos + ')'
   )
+
+  imgContainer.style.setProperty('width', templateContainerDims.width + 'px')
+  imgContainer.style.setProperty('height', templateContainerDims.height + 'px')
+
   gridPlaceholder = gridSquares[11].getBoundingClientRect()
 
   for (let i = 0; i < gridSquares.length - 1; i++) {
@@ -164,4 +175,19 @@ function imgShuffle(gridSlotCoordinates) {
   assignImagesXY()
 }
 
+galleryButton.addEventListener('click', function(e) {
+  for (let i = 0; i < gridSquares.length; i++) {
+    gridSquares[i].style.setProperty(
+      'visibility', 'hidden'
+    )
+  }
+  if (!assignImagesXY.called) {
+    assignImagesXY()
+    galleryButton.classList.add('pressed')
+    console.log('buttonPressed')
+  } else {
+    imgShuffle(gridSlotCoordinates)
+    galleryButton.classList.add('pressed')
+  }
+})
 pageLoad()
