@@ -41,7 +41,7 @@ main {
 .gallery {
   position: relative;
   display: grid;
-  grid-template-areas: "center";
+  grid-template-areas: 'center';
   width: 100vw;
 }
 
@@ -66,7 +66,7 @@ main {
   width: calc(100vh / 3);
   border-radius: 5%;
   visibility: visible;
-  transition: all .5s;
+  transition: all 0.5s;
   height: calc(100vh / 3);
   -webkit-animation: flip-diagonal-2-bck 1s
     cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s infinite alternate both;
@@ -177,7 +177,6 @@ main {
   perspective: 100px;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(7, 1fr);
-  
 }
 
 .carousel-container .button-container {
@@ -192,32 +191,75 @@ main {
   /* transform: translate(0px, 0px); */
   animation: fade-in 0.75s ease-in 1s 1 alternate both;
   text-align: center;
-  perspective: 300px;
+  perspective: 500px;
   z-index: 2;
 }
 
 .carousel-container .button {
   display: flex;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
-  animation: gradient 5s ease infinite;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  border-radius: 5%;
   width: 150px;
+  background-color: #fff;
+  border-radius: 5%;
+  transform: translateZ(0px);
+  transition: transform 0.5s, box-shadow 0.5s;
   height: 150px;
   font-family: 'Metropolis Regular';
-  color: #ffffff;
-  box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
-
-.button span {
-  user-select: none;
+.carousel-container .button:hover {
+  transform: translateZ(10px);
+  box-shadow: 1px 5px 15px 0px rgba(0, 0, 0, 0.1);
 }
 
-.button.clicked {
-  animation: press .5s ease-in-out 0s 1 alternate both;
+.button .layer1 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  animation: gradient 5s ease infinite;
+  background-size: 400% 400%;
+  border-radius: 5%;
+  user-select: none;
+  transition: all 1s;
+  font-size: 125%;
+  color: #ffffff;
+  opacity: 1;
+}
+.carousel-container .button.clicked .layer1 {
+  opacity: 0;
+}
+.carousel-container .button .layer1 span {
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all .25s;
+}
+.carousel-container .button.clicked .layer1 span {
+  transform: translateY(-25px);
+  opacity: 0;
+}
+
+.button .layer2 {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  animation: gradient 2.5s ease infinite;
+  background-size: 400% 400%;
+  border-radius: 5%;
+  user-select: none;
+  font-size: 125%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @keyframes fade-in {
@@ -231,13 +273,13 @@ main {
 
 @keyframes gradient {
   0% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
   50% {
-      background-position: 100% 50%;
+    background-position: 100% 50%;
   }
   100% {
-      background-position: 0% 50%;
+    background-position: 0% 50%;
   }
 }
 
@@ -271,16 +313,17 @@ main {
 }
 
 .image-container .image {
-  box-shadow: 1px 2px 7.5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
   opacity: 0;
   border-radius: 5px;
   width: 95%;
   height: 95%;
   background-image: url(/imageGallery/stainless-steel-spoon-on-black-ceramic-bowl-3789885.jpg);
   background-size: cover;
-  transition: all 0.25s;
+  transition: all 0.5s;
   transform: translateZ(0px);
   transform-style: preserve-3d;
+  cursor: pointer;
 }
 
 .image-container.shuffle-a:hover .image {
@@ -289,6 +332,7 @@ main {
 }
 
 .image-container.shuffle-a .image {
+  box-shadow: 1px 2px 7.5px 0px rgba(0, 0, 0, 0.5);
   opacity: 1;
 }
 

@@ -2,8 +2,33 @@ const gridSquares = document.getElementsByClassName('placeholder')
 const placeholderContainer = document.querySelector('.placeholder-container')
 const imgSquares = document.getElementsByClassName('image-container')
 const imgContainer = document.querySelector('.carousel-container')
-
+const img = document.querySelectorAll('.image')
+const imgArray = [
+  'https://images.pexels.com/photos/788662/pexels-photo-788662.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/326496/pexels-photo-326496.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+  'https://images.pexels.com/photos/3224155/pexels-photo-3224155.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+  'https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/3789885/pexels-photo-3789885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1493226/pexels-photo-1493226.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1438798/pexels-photo-1438798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1431762/pexels-photo-1431762.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+  'https://images.pexels.com/photos/1337824/pexels-photo-1337824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/323645/pexels-photo-323645.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/137613/pexels-photo-137613.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/2564496/pexels-photo-2564496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1426620/pexels-photo-1426620.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/3620404/pexels-photo-3620404.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1002638/pexels-photo-1002638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/544113/pexels-photo-544113.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1261578/pexels-photo-1261578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+]
+const imgOverlayQuote = document.querySelectorAll('.image-container .overlay h2')
+const imgOverlayCredit = document.querySelectorAll('.image-container .overlay p')
 const galleryButton = document.querySelector('.button')
+const buttonText = document.querySelector('.button span')
 
 let root = document.documentElement
 
@@ -140,6 +165,15 @@ function setCoordinates() {
       'translate(' + gridSlotCoordinates[20] + ')'
     )
   }
+
+  function fillImages() {
+    for (let i = 0; i < imgSquares.length; i++) {
+      img[i].style.setProperty(
+        'background-image', 'url(' + imgArray[i] + ')'
+      )
+    }
+  }
+  fillImages()
 }
 
 function assignImagesXY() {
@@ -148,6 +182,7 @@ function assignImagesXY() {
   }
   console.log(root.style.getPropertyValue('--grid-slot-k-pos'))
   assignImagesXY.called = true
+  galleryButton.classList.add('clicked')
 }
 function returnImagesXY() {
   for (let i = 0; i < imgSquares.length; i++) {
