@@ -2,7 +2,7 @@ const gridSquares = document.getElementsByClassName('placeholder')
 const placeholderContainer = document.querySelector('.placeholder-container')
 const imgSquares = document.getElementsByClassName('image-container')
 const imgContainer = document.querySelector('.carousel-container')
-const img = document.querySelectorAll('.image')
+const img = document.querySelectorAll('.imgSrc')
 const imgArray = [
   'https://images.pexels.com/photos/788662/pexels-photo-788662.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/326496/pexels-photo-326496.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
@@ -14,7 +14,7 @@ const imgArray = [
   'https://images.pexels.com/photos/1431762/pexels-photo-1431762.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
   'https://images.pexels.com/photos/1337824/pexels-photo-1337824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/3297363/pexels-photo-3297363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/3680316/pexels-photo-3680316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/323645/pexels-photo-323645.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/137613/pexels-photo-137613.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/2564496/pexels-photo-2564496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
@@ -25,10 +25,15 @@ const imgArray = [
   'https://images.pexels.com/photos/1261578/pexels-photo-1261578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
 ]
-const imgOverlayQuote = document.querySelectorAll('.image-container .overlay h2')
-const imgOverlayCredit = document.querySelectorAll('.image-container .overlay p')
+const imgOverlayQuote = document.querySelectorAll(
+  '.image-container .overlay h2'
+)
+const imgOverlayCredit = document.querySelectorAll(
+  '.image-container .overlay p'
+)
 const galleryButton = document.querySelector('.button')
 const buttonText = document.querySelector('.button span')
+const buttonUnderLayer = document.querySelector('.button .layer2')
 
 let root = document.documentElement
 
@@ -41,11 +46,22 @@ var tileDimensions = document.querySelectorAll(
   '.image-container',
   '.button-container'
 )
+var tileAnimationDelay
 
 assignImagesXY.called = false
 
 window.addEventListener('resize', function(e) {
   pageLoad()
+  gridSquares[0].addEventListener('transitionend', function(e) {
+    pageLoad()
+  })
+  // assignImagesXY()
+})
+window.addEventListener("deviceorientation", function(e) {
+  gridSquares[0].addEventListener('transitionend', function(e) {
+    pageLoad()
+    console.log('device rotated')
+  })
   // assignImagesXY()
 })
 
@@ -168,9 +184,18 @@ function setCoordinates() {
 
   function fillImages() {
     for (let i = 0; i < imgSquares.length; i++) {
-      img[i].style.setProperty(
-        'background-image', 'url(' + imgArray[i] + ')'
-      )
+      img[i].setAttribute("src", imgArray[i])
+      function checkImgLandscape(i) {
+        if (img[i].width >= img[i].height) {
+          img[i].style.setProperty("width", 'auto')
+          img[i].style.setProperty("height", '102%')
+        }
+        else {
+          img[i].style.setProperty("width", '102%')
+          img[i].style.setProperty("height", 'auto')
+        }
+      }
+      checkImgLandscape(i)
     }
   }
   fillImages()
@@ -182,7 +207,6 @@ function assignImagesXY() {
   }
   console.log(root.style.getPropertyValue('--grid-slot-k-pos'))
   assignImagesXY.called = true
-  galleryButton.classList.add('clicked')
 }
 function returnImagesXY() {
   for (let i = 0; i < imgSquares.length; i++) {
@@ -193,6 +217,7 @@ function returnImagesXY() {
 
 function imgShuffle(gridSlotCoordinates) {
   returnImagesXY()
+  buttonUnderLayer.classList.add('clickedAgain')
   var currentIndex = gridSlotCoordinates.length,
     temporaryValue,
     randomIndex
@@ -208,21 +233,21 @@ function imgShuffle(gridSlotCoordinates) {
 
   setCoordinates()
   assignImagesXY()
+  clickedAgain = true
 }
 
+buttonUnderLayer.addEventListener('animationend', function(e) {
+  buttonUnderLayer.classList.remove('clickedAgain')
+})
+
 galleryButton.addEventListener('click', function(e) {
-  for (let i = 0; i < gridSquares.length; i++) {
-    gridSquares[i].style.setProperty(
-      'visibility', 'hidden'
-    )
-  }
+  galleryButton.classList.add('clicked')
+  placeholderContainer.style.setProperty('opacity', '0')
   if (!assignImagesXY.called) {
-    assignImagesXY()
-    galleryButton.classList.add('pressed')
-    console.log('buttonPressed')
+    tileAnimationDelay = setTimeout(assignImagesXY, 0)
   } else {
     imgShuffle(gridSlotCoordinates)
-    galleryButton.classList.add('pressed')
   }
 })
+
 pageLoad()

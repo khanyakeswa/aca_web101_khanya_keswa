@@ -1,3 +1,7 @@
+html::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   display: grid;
   grid-template-columns: auto 1100px auto;
@@ -405,7 +409,6 @@ main {
   margin-inline-start: 0;
   margin-inline-end: 0px;
   padding-inline-start: 0;
-  overflow: scroll;
 }
 
 li::before {
