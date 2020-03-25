@@ -39,6 +39,30 @@ main {
   width: 100%;
 }
 
+.logo {
+  background-size: 50px;
+  background-color: #e54e40;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.35);
+  color: #ffffff;
+  height: 70px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  right: 0px;
+  top: 0px;
+  width: 70px;
+  z-index: 3;
+  transition: all;
+}
+
+.logo:hover {
+}
+
+.logo svg {
+  width: auto;
+  height: 50%;
+}
+
 .gallery {
   position: relative;
   display: grid;
@@ -352,45 +376,20 @@ main {
   box-shadow: none;
   transform-style: preserve-3d;
   display: grid;
-  grid-template-areas: "center";
-  background-color: rgb(75, 75, 75);
+  background-image: '';
+  background-position: center;
   opacity: 0;
   -webkit-perspective: 500px;
   perspective: 500px;
   width: 95%;
   height: 95%;
   overflow: hidden;
-  transition: transform 0.25s, box-shadow 0.25s, opacity .5s;
+  transition: transform 0.25s, box-shadow 0.25s, opacity .5s, background-size .5s;
   transform: translateZ(0px);
   transform-style: preserve-3d;
   cursor: pointer;
 }
 
-.image-container:nth-child(4) .image .imgSrc,
-.image-container:nth-child(5) .image .imgSrc,
-.image-container:nth-child(6) .image .imgSrc,
-.image-container:nth-child(7) .image .imgSrc,
-.image-container:nth-child(10) .image .imgSrc,
-.image-container:nth-child(12) .image .imgSrc,
-.image-container:nth-child(14) .image .imgSrc,
-.image-container:nth-child(16) .image .imgSrc,
-.image-container:nth-child(17) .image .imgSrc,
-.image-container:nth-child(19) .image .imgSrc {
-  background-size: 103% auto;
-}
-
-.image-container:nth-child(4) .image:hover .imgSrc,
-.image-container:nth-child(5) .image:hover .imgSrc,
-.image-container:nth-child(6) .image:hover .imgSrc,
-.image-container:nth-child(7) .image:hover .imgSrc,
-.image-container:nth-child(10) .image:hover .imgSrc,
-.image-container:nth-child(12) .image:hover .imgSrc,
-.image-container:nth-child(14) .image:hover .imgSrc,
-.image-container:nth-child(16) .image:hover .imgSrc,
-.image-container:nth-child(17) .image:hover .imgSrc,
-.image-container:nth-child(19) .image:hover .imgSrc {
-  background-size: 100% auto;
-}
 
 .image-container.shuffle-a .image:hover {
   transform: translateZ(10px);
@@ -489,21 +488,23 @@ main {
 }
 
 .image .overlay {
+  backdrop-filter: grayscale(1) blur(3px) brightness(100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  grid-area: center;
+  top: -10%;
   opacity: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   pointer-events: none;
-  transition: all .25s;
+  transition: opacity .25s;
   z-index: 2;
   perspective: 500px;
 }
 
 .image:hover .overlay {
+  backdrop-filter: grayscale(.8) blur(3px) brightness(50%);
   opacity: 1
 }
 
@@ -518,10 +519,11 @@ main {
   opacity: 0;
   height: fit-content;
   margin: 0 5% 0 5%;
-  text-transform: uppercase;
+  /* text-transform: capitalize; */
   transform: rotateY(-15deg) translateX(-15%);
-  transition: all .5s ease-out;
+  transition: all .4s ease-out;
   transform-style: preserve-3d;
+  transition-delay: .1s;
 }
 
 .image:hover .overlay p {
@@ -530,6 +532,11 @@ main {
 }
 
 .overlay span {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient 2.5s ease infinite;  
   white-space: normal;
   text-transform: uppercase;
   float: right;
@@ -540,33 +547,17 @@ main {
   text-align: end;
   width: 90%;
   bottom: 0;
-  color: aliceblue;
+  color: transparent;
   margin: 5% 5% 0px 5%; 
   transform: rotateY(15deg) translateX(15%);
-  transition: all .5s ease-out;
+  transition: all .4s ease-out;
   transform-style: preserve-3d;
+  transition-delay: .05s;
 }
 
 .image:hover .overlay span {
   transform: rotateY(0deg) translateX(0px);
-  opacity: .5;
-}
-
-.image .imgSrc {
-  flex-basis: auto;
-  grid-area: center;
-  overflow: hidden;
-  transform-style: preserve-3d;
-  filter: blur(0px) brightness(1) grayscale(0%);
-  transform-origin: center;
-  transform: translateZ(0px);
-  transition: transform .25s, filter .25s;
-  transition-timing-function: ease-out;
-}
-
-.image:hover .imgSrc {
-  transform: translateZ(15px);
-  filter: blur(2px) brightness(.5) grayscale(90%);
+  opacity: .75;
 }
 
 @media only screen and (max-aspect-ratio: 1/1) {

@@ -2,35 +2,30 @@ const gridSquares = document.getElementsByClassName('placeholder')
 const placeholderContainer = document.querySelector('.placeholder-container')
 const imgSquares = document.getElementsByClassName('image-container')
 const imgContainer = document.querySelector('.carousel-container')
-const img = document.querySelectorAll('.imgSrc')
+const img = document.querySelectorAll('.image')
 const imgArray = [
   'https://images.pexels.com/photos/788662/pexels-photo-788662.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/326496/pexels-photo-326496.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+  'https://images.pexels.com/photos/1438798/pexels-photo-1438798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/323645/pexels-photo-323645.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/2564496/pexels-photo-2564496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1002638/pexels-photo-1002638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/544113/pexels-photo-544113.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/1431762/pexels-photo-1431762.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+  'https://images.pexels.com/photos/1261578/pexels-photo-1261578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/3224155/pexels-photo-3224155.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
   'https://images.pexels.com/photos/3617496/pexels-photo-3617496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/3789885/pexels-photo-3789885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/1493226/pexels-photo-1493226.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/1438798/pexels-photo-1438798.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/1431762/pexels-photo-1431762.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  'https://images.pexels.com/photos/1337824/pexels-photo-1337824.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/1054777/pexels-photo-1054777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  'https://images.pexels.com/photos/3608618/pexels-photo-3608618.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/3680316/pexels-photo-3680316.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/323645/pexels-photo-323645.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/137613/pexels-photo-137613.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/2564496/pexels-photo-2564496.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
   'https://images.pexels.com/photos/1426620/pexels-photo-1426620.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/3620404/pexels-photo-3620404.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/1002638/pexels-photo-1002638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/544113/pexels-photo-544113.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/1261578/pexels-photo-1261578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  'https://images.pexels.com/photos/733853/pexels-photo-733853.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+  'https://images.pexels.com/photos/3620404/pexels-photo-3620404.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
 ]
-const imgOverlayQuote = document.querySelectorAll(
-  '.image-container .overlay h2'
-)
-const imgOverlayCredit = document.querySelectorAll(
-  '.image-container .overlay p'
-)
+
 const galleryButton = document.querySelector('.button')
 const buttonText = document.querySelector('.button span')
 const buttonUnderLayer = document.querySelector('.button .layer2')
@@ -57,7 +52,7 @@ window.addEventListener('resize', function(e) {
   })
   // assignImagesXY()
 })
-window.addEventListener("deviceorientation", function(e) {
+window.addEventListener('deviceorientation', function(e) {
   gridSquares[0].addEventListener('transitionend', function(e) {
     pageLoad()
     console.log('device rotated')
@@ -183,19 +178,25 @@ function setCoordinates() {
   }
 
   function fillImages() {
-    for (let i = 0; i < imgSquares.length; i++) {
-      img[i].setAttribute("src", imgArray[i])
-      function checkImgLandscape(i) {
-        if (img[i].width >= img[i].height) {
-          img[i].style.setProperty("width", 'auto')
-          img[i].style.setProperty("height", '102%')
-        }
-        else {
-          img[i].style.setProperty("width", '102%')
-          img[i].style.setProperty("height", 'auto')
-        }
-      }
-      checkImgLandscape(i)
+    for (let i = 0; i < 11; i++) {
+      img[i].style.setProperty('background-image', 'url(' + imgArray[i] + ')')
+      img[i].style.setProperty('background-size', 'auto 100%')
+      img[i].addEventListener('mouseover', function() {
+        this.style.setProperty('background-size', 'auto 105%')
+      })
+      img[i].addEventListener('mouseout', function() {
+        this.style.setProperty('background-size', 'auto 100%')
+      })
+    }
+    for (let i = 11; i < img.length; i++) {
+      img[i].style.setProperty('background-image', 'url(' + imgArray[i] + ')')
+      img[i].style.setProperty('background-size', '100% auto')
+      img[i].addEventListener('mouseover', function() {
+        this.style.setProperty('background-size', '105% auto')
+      })
+      img[i].addEventListener('mouseout', function() {
+        this.style.setProperty('background-size', '100% auto')
+      })
     }
   }
   fillImages()
