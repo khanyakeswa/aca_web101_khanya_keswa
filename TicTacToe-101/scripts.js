@@ -8,7 +8,7 @@
 
 // The variable will change from X to O based on what player turn it is. We need to hold this so we can place an X or O on the board when they're clicked.
 let currentMarker = 'X'
-let squares = document.getElementsByTagName("td")
+let squares = document.getElementsByTagName('td')
 
 // this "handleClick" function is called when a box is clicked. Here, "element" will hold the same value as "this" does in the HTML.
 // "this" is a special word in JS but "element" could have been "thing" or "el" or whatever we wanted it to be as long as we use it again in the "console.log" statement
@@ -87,4 +87,24 @@ const winningCombinations = [
   [1, 4, 7],
   [0, 4, 8],
   [2, 4, 6]
-];
+]
+
+var isX = element => element.innerText === 'X'
+var isO = element => element.innerText === 'O'
+var oCombinations = []
+var xCombinations = []
+
+var board = []
+window.onload = function() {
+  board = Array.prototype.slice.call(squares)
+}
+
+function recordXO() {
+  for (let i = 0; i < board.length; i++) {
+    if (board[i].innerHTML && board[i].innerText === 'X') {
+      xCombinations.push(board.indexOf(board[i]))
+    } else if (board[i].innerText === 'O') {
+      oCombinations.push(board.indexOf(board[i]))
+    }
+  }
+}
