@@ -228,18 +228,59 @@ body::-webkit-scrollbar {
   margin-left: calc(35px + 77.59px + 105.84px + 117.61px)
 }
 
-.logo {
-  background-size: 50px;
-  background-color: var(--main-bg-color);
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
-  color: #ffffff;
+.logo-container {
+  width: var(--standard-margin-width);
   height: var(--standard-margin-width);
   position: fixed;
-  right: 0px;
-  top: 0px;
-  width: var(--standard-margin-width);
+  top: 0;
+  right: 0;
   z-index: 4;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
 }
+
+.logo-container:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.075);
+}
+
+.logo {
+  animation: gradient 5s ease infinite;
+  background-size: 200% 200%;
+  background-position: center;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  height: 100%;
+  transition: all .4s;
+  width: 100%;
+}
+
+.logo:hover {
+  transform: translateZ(30px);
+}
+
+.exit-section-2 .logo {
+  fill: #fff;
+}
+.enter-section-2 .logo:hover .graphic{
+  fill: var(--darkmode-bg-color);
+}
+
+.logo .graphic {
+  fill: var(--main-bg-color);
+  transition: all .4s;
+}
+.logo:hover .graphic {
+  fill: #fff;
+}
+
+.logo polygon {
+  opacity: 1;
+  fill: #fff;
+  transition: all .4s;
+}
+.logo:hover polygon {
+  opacity: 0;
+}
+
 
 /* top section */
 .section.top {
@@ -593,6 +634,7 @@ body::-webkit-scrollbar {
 
 /* color bar */
 .color-bar {
+  box-sizing: content-box;
   grid-row: 3;
   height: 300px;
   width: 1920px;
@@ -814,6 +856,17 @@ body::-webkit-scrollbar {
     -webkit-transform: translateX(-2px);
     -ms-transform: translateX(-2px);
     transform: translateX(-2px);
+  }
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
