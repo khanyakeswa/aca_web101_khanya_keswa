@@ -8,7 +8,13 @@
 
 // The variable will change from X to O based on what player turn it is. We need to hold this so we can place an X or O on the board when they're clicked.
 let currentMarker = 'X'
-let squares = document.getElementsByTagName("td")
+let squares = document.getElementsByTagName('td')
+let board = [
+  ['', '', ''],
+  ['', '', ''],
+  ['', '', '']
+]
+let moveCount = 0
 
 // this "handleClick" function is called when a box is clicked. Here, "element" will hold the same value as "this" does in the HTML.
 // "this" is a special word in JS but "element" could have been "thing" or "el" or whatever we wanted it to be as long as we use it again in the "console.log" statement
@@ -21,29 +27,102 @@ const handleClick = element => {
   //  checking to see if the square clicked has anything in it, if not continue
   if (!document.getElementById(element.id).innerHTML) {
     addMarker(element.id)
+    moveCount++
   }
 }
 
 // squares.addEventListener("click", handleClick(this))
 
 // this function places the "currentMarker" inside the HTML element that was clicked and calls the "changeMarker" function.
-const addMarker = id => {
+addMarker = (id) => {
+  const row = parseInt(id.charAt(0))
+  const column = parseInt(id.charAt(2))
+
   // @TODO-1: Open the console tab in your Chrome Inspector Tool and click on the top-left square to see what's logged to the console.
-  console.log(`*** The current marker is:  ${currentMarker}. ***`)
-  console.log(
-    `Therefore, a  "${currentMarker}"  should be placed in the square with the id:  ${id}`
-  )
+  // console.log(`*** The current marker is:  ${currentMarker}. ***`)
+  // console.log(
+  //   `Therefore, a  "${currentMarker}"  should be placed in the square with the id:  ${id}`
+  // )
 
   // @TODO-2: Build a line of code that will set the innerHTML property of the element that was clicked to the "currentMarker"
   document.getElementById(id).innerHTML = currentMarker
+  board[row][column] = currentMarker
 
-  // @TODO-2.5: MIX & MATCH, You will need the following pieces of code to build that line:
-  // = currentMarker
-  // .getElementById(id)
-  // document
-  // .innerHTML
+  checkForWin()
+}
 
-  changeMarker()
+const checkForWin = () => {
+  if (horizontalWin() || verticalWin() || diagonalWin()) {
+    window.alert(`Player ${currentMarker} won!`)
+    setTimeout(function() {
+      resetBoard()
+    }, 500)
+  } 
+  else if (moveCount == 8) {
+    window.alert(`It's a tie!`)
+    setTimeout(function() {
+      resetBoard()
+    }, 500)
+  }
+  else {
+    changeMarker()
+  }
+}
+
+const horizontalWin = () => {
+  if (
+    (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') ||
+    (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O')
+  ) {
+    return true
+  } else if (
+    (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') ||
+    (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O')
+  ) {
+    return true
+  } else if (
+    (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') ||
+    (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O')
+  ) {
+    return true
+  } else {
+    return false
+  }
+}
+const verticalWin = () => {
+  if (
+    (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') ||
+    (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O')
+  ) {
+    return true
+  } else if (
+    (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') ||
+    (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O')
+  ) {
+    return true
+  } else if (
+    (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') ||
+    (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O')
+  ) {
+    return true
+  } else {
+    return false
+  }
+}
+const diagonalWin = () => {
+  if (
+    (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X') ||
+    (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O')
+  ) {
+    return true
+  } else if (
+    (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X') ||
+    (board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O')
+  ) {
+    return true
+  } else {
+    return false
+  }
 }
 
 // This "changeMarker" function changes "X" to "O" in the "currentMarker" variable or "O" to "X"
@@ -75,16 +154,11 @@ const resetBoard = () => {
     // sets the innerHTML to null to replace the "X" or "O"
     squares[i].innerHTML = null
   }
+  board = [
+    ['', '', ''],
+    ['', '', ''],
+    ['', '', '']
+  ]
+  currentMarker = 'X'
+  moveCount == 0
 }
-
-// Winner or Loser Functionality
-const winningCombinations = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [2, 5, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [0, 4, 8],
-  [2, 4, 6]
-];
