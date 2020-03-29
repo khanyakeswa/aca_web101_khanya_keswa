@@ -249,18 +249,13 @@ body::-webkit-scrollbar {
   background-position: center;
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   height: 100%;
-  transition: all .4s;
   width: 100%;
 }
 
-.logo:hover {
-  transform: translateZ(30px);
-}
-
-.exit-section-2 .logo {
+.exit-section-2 .logo:hover .graphic {
   fill: #fff;
 }
-.enter-section-2 .logo:hover .graphic{
+.enter-section-2 .logo:hover .graphic {
   fill: var(--darkmode-bg-color);
 }
 
