@@ -18,10 +18,11 @@ function scheduleSectionPositionRecalculation() {
 window.addEventListener('resize', scheduleSectionPositionRecalculation)
 
 function indexOfCurrentSection() {
+  const sections = [].slice.call(document.querySelectorAll('.section'))
   const scrollPosition = window.pageYOffset
 
   let i = 0
-  while (scrollPosition >= sectionPositions[i]) {
+  while (scrollPosition >= sectionPositions[i] - (window.innerHeight / 2)) {
     i++
   }
 
@@ -66,7 +67,6 @@ function scrollToSectionIndex(sectionIndex) {
 function scrollToPreviousSection() {
   const sectionIndex = indexOfPreviousSection()
   scrollToSectionIndex(sectionIndex)
-  console.log(indexOfCurrentSection())
 }
 
 function scrollToNextSection() {
