@@ -108,27 +108,15 @@ body::-webkit-scrollbar {
   visibility: hidden;
 }
 
-.enter-section-1 .scroll-indicator .dot-1,
-.enter-section-2 .scroll-indicator .dot-2,
-.enter-section-3 .scroll-indicator .dot-3,
-.enter-section-4 .scroll-indicator .dot-4,
-.enter-section-5 .scroll-indicator .dot-5,
-.enter-section-6 .scroll-indicator .dot-6,
-.enter-section-7 .scroll-indicator .dot-7
+.current-section-1 .scroll-indicator .dot-1,
+.current-section-2 .scroll-indicator .dot-2,
+.current-section-3 .scroll-indicator .dot-3,
+.current-section-4 .scroll-indicator .dot-4,
+.current-section-5 .scroll-indicator .dot-5,
+.current-section-6 .scroll-indicator .dot-6,
+.current-section-7 .scroll-indicator .dot-7
 {
   fill: var(--main-bg-color);
-  transition: fill .2s;
-}
-
-.exit-section-1 .scroll-indicator .dot-1,
-.exit-section-2 .scroll-indicator .dot-2,
-.exit-section-3 .scroll-indicator .dot-3,
-.exit-section-4 .scroll-indicator .dot-4,
-.exit-section-5 .scroll-indicator .dot-5,
-.exit-section-6 .scroll-indicator .dot-6,
-.exit-section-7 .scroll-indicator .dot-7
-{
-  fill: rgba(0, 0, 0, 0.15);
   transition: fill .2s;
 }
 
@@ -150,12 +138,6 @@ body::-webkit-scrollbar {
   width: 100%;
   z-index: 2;
 }
-.enter-section-2 .menu{
-  background-color: var(--darkmode-bg-color);
-}
-.exit-section-2 .menu {
-  background-color: #ffffff;
-}
 
 .navbar {
   color: #505050;
@@ -163,12 +145,6 @@ body::-webkit-scrollbar {
   transition: color .1s;
   width: 100%;
   z-index: 1;
-}
-.enter-section-2 .navbar{
-  color: #ffffff;
-}
-.exit-section-2 .navbar {
-  color: initial;
 }
 
 .links {
@@ -212,11 +188,11 @@ body::-webkit-scrollbar {
 }
 
 
-.enter-section-1 .link-underscore {
+.current-section-1 .link-underscore {
   margin-left: 35px;
 }
 
-.enter-section-2 .link-underscore {
+.current-section-2 .link-underscore {
   margin-left: calc(35px + 77.59px)
 }
 
@@ -284,17 +260,29 @@ body::-webkit-scrollbar {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  perspective: 500px;
 }
 
 .section.top .splash {
   position: absolute;
   background: url("/myPortfolio/imgs/splash_1.jpg") no-repeat center center;
   background-size: cover;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0);
   top: var(--standard-margin-width);
   right: var(--standard-margin-width);
-  left: var(--standard-margin-width);
+  left: 0;
   bottom: var(--standard-margin-width);
+  transform: translateZ(-10px);
+  transform-style: preserve-3d;
+  opacity: .5;
+  transition: all .5s;
+  transition-delay: .1s;
+}
+
+.current-section-1 .section.top .splash {
+  opacity: 1;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, .25);
+  transform: translateZ(0px);
 }
 
 .section.top .header {
@@ -322,14 +310,7 @@ body::-webkit-scrollbar {
   width: 480px;
   z-index: 2;
 }
-.enter-section-2 .sidebar{
-  background-color: var(--darkmode-bg-color);
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.25);
-}
-.exit-section-2 .sidebar {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.075);
-}
+
 .collapsed .sidebar {
   transform: translateX(-410px);
 }
@@ -473,12 +454,6 @@ body::-webkit-scrollbar {
   background-color: #ffffff;
   transition: background-color .5s;
 }
-.enter-section-2 .sidebar .carousel-cell {
-  background-color: var(--darkmode-bg-color);
-}
-.exit-section-2 .sidebar .carousel-cell {
-  background-color: #fff;
-}
 
 .carousel-cell:nth-child(1) {
   transform: rotateX(0deg) translateZ(288px);
@@ -581,6 +556,8 @@ body::-webkit-scrollbar {
   position: absolute;
   right: 70px;
   top: 70px;
+  perspective: 500px;
+  perspective-origin: left;
 }
 
 .section.about-me .content.one {
@@ -589,8 +566,20 @@ body::-webkit-scrollbar {
   background-image: url('/myPortfolio/imgs/headshot.jpg');
   background-size: cover;
   background-position: center;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0);
+  transform: translateZ(-10px);
+  transform-style: preserve-3d;
+  transition: all .5s;
+  transition-delay: .1s;
+  opacity: .5;
 }
+
+.current-section-2 .section.about-me .content.one {
+  opacity: 1;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, .25);
+  transform: translateZ(0px);
+}
+
 
 .section.about-me .content.two {
   grid-row: 1;
@@ -616,14 +605,21 @@ body::-webkit-scrollbar {
   font-size: 2.5em;
   color: var(--darkmode-bg-color);
 }
-.enter-section-2 .section.about-me .header {
-  color: #ffffff;
-}
 
 .section.about-me .underscore {
   width: 110px;
   border-bottom: 4px solid var(--main-bg-color);
   padding-top: 25px;
+}
+
+/* section contact-me */
+
+.section.contact-me {
+  grid-column: 1/3;
+  grid-row: 3;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
 }
 
 
@@ -864,6 +860,5 @@ body::-webkit-scrollbar {
     background-position: 0% 50%;
   }
 }
-
 
 

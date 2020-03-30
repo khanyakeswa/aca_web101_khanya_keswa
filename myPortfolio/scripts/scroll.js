@@ -1,4 +1,5 @@
 const navbar = document.querySelector('.navbar', '.portfolio-button')
+const colorBarHeight = document.getElementsByClassName('color-bar');
 
 let last_known_scroll_position = 0
 let ticking = false
@@ -24,39 +25,34 @@ let exitSectionSeven = false
 function doSomething(scroll_pos) {
   // navbar.style.transform = `translateX(${scroll_pos}px)`
   // Do something with the scroll position
-  const isScrolledPastTopSection = scroll_pos >= 0.5 * window.innerHeight
-  if (!isCollapsed && isScrolledPastTopSection) {
+
+  // scroll measurments
+  const isScrolledSectionZero = scroll_pos >= 0 && scroll_pos < 0.5 * window.innerHeight
+  const isScrolledSectionOne = scroll_pos >= 0.5 * window.innerHeight && scroll_pos < 1.5 * window.innerHeight
+  const isScrolledSectionTwo = scroll_pos >= 1.5 * window.innerHeight && scroll_pos < 2.5 * window.innerHeight
+  
+  if (!isCollapsed && !isScrolledSectionZero) {
     document.body.classList.add('collapsed')
     isCollapsed = true
-    console.log('collapsing')
   }
-  if (isCollapsed && !isScrolledPastTopSection) {
+  if (isCollapsed && isScrolledSectionZero) {
     document.body.classList.remove('collapsed')
     isCollapsed = false
-    console.log('uncollapsing')
   }
 
-  // scroll indicator sections
-  const colorBarHeight = document.getElementsByClassName('color-bar');
+  //Scrolled to first section
+  if (isScrolledSectionZero) {
+    document.body.classList.add('current-section-1')
+  }
+  if (!isScrolledSectionZero) {
+    document.body.classList.remove('current-section-1')
+  }
 
-  const isScrolledPastSectionOne = scroll_pos >= 0.5 * window.innerHeight
-  const isScrolledPastSectionTwo = scroll_pos >= 1.5 * window.innerHeight
-  //Scroll-dot 1
-  if (!enterSectionTwo && isScrolledPastSectionOne) {
-    document.body.classList.add('enter-section-2')
-    enterSectionTwo = true
+  if (isScrolledSectionOne) {
+    document.body.classList.add('current-section-2')
   }
-  if (enterSectionTwo && !isScrolledPastSectionOne) {
-    document.body.classList.remove('enter-section-2')
-    enterSectionTwo = false
-  }
-  if (!exitSectionTwo && isScrolledPastSectionTwo) {
-    document.body.classList.add('exit-section-2')
-    exitSectionTwo = true
-  }
-  if (exitSectionTwo && !isScrolledPastSectionTwo) {
-    document.body.classList.remove('exit-section-2')
-    exitSectionTwo = false
+  if (!isScrolledSectionOne) {
+    document.body.classList.remove('current-section-2')
   }
 }
 

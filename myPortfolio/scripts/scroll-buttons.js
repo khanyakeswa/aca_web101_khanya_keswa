@@ -5,10 +5,9 @@ function recalculateSectionPositions() {
   console.log('Re-calculating section positions')
 
   const sections = [].slice.call(document.querySelectorAll('.section'))
-  const bodyPosition = document.body.getBoundingClientRect().top
 
   sectionPositions = sections.map(
-    section => section.getBoundingClientRect().top - bodyPosition
+    section => section.offsetTop
   )
 }
 
@@ -31,7 +30,7 @@ function indexOfCurrentSection() {
 
 function indexOfPreviousSection() {
   return (
-    (sectionPositions.length + indexOfCurrentSection() - 1) %
+    (indexOfCurrentSection() - 1) %
     sectionPositions.length
   )
 }
@@ -67,6 +66,7 @@ function scrollToSectionIndex(sectionIndex) {
 function scrollToPreviousSection() {
   const sectionIndex = indexOfPreviousSection()
   scrollToSectionIndex(sectionIndex)
+  console.log(indexOfCurrentSection())
 }
 
 function scrollToNextSection() {
